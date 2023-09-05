@@ -71,7 +71,7 @@ def create_dataset(dataset, look_back=1, y_col=Y_COL):
     return np.array(dataX), np.array(dataY)
 
 
-def DataSet():  # 請忽略這個原版的
+def DataSet():
     dataframe = pd.read_excel(
         f"{DATA_LOCATION}/{DATA_FILE_NAME}.xlsx",
         sheet_name="Sheet1",
@@ -197,6 +197,15 @@ def LeNet(X):
     test_predict = scaler.inverse_transform(test_predict)
     test_true = scaler.inverse_transform(Y_test).reshape(1, -1)
 
+    true_values = np.cumsum((dataset)[:, Y_COL].reshape(-1, 1))
+
+    train_true = np.cumsum(train_true).reshape(1, -1)
+    test_true = true_values[-len(test_true[0]) :].reshape(1, -1)
+
+    train_predict = np.cumsum(train_predict).reshape(-1, 1)
+    test_predict = np.cumsum(np.append(test_true[0, 0], test_predict))[1:].reshape(
+        -1, 1
+    )
     # train_predict = np.cumsum(train_predict).reshape(-1, 1)
     # test_predict = np.cumsum(np.append(train_predict[-1, -1], test_predict))[
     #     1:
@@ -255,7 +264,7 @@ def LeNet(X):
     # model.save("model/WaferID_model_{}.h5".format(score[0]))
     # print('Test loss:', score[0])
     # print('Test accuracy:', score[1])
-    return test_mse, param
+    return test_mape, param
 
 
 # ------------------------------------------------------------------------------
@@ -443,7 +452,7 @@ def SSO_UPDATE(sol, Nx, Ny):
 
 # *****************************************************************************************
 if __name__ == "__main__":
-    Ngen, Nsol, Nvar, Nrun = 100, 5, 9, 1
+    Ngen, Nsol, Nvar, Nrun = 20, 50, 9, 5
     # 6 Cg, Cp, Cw = 0.35, 0.65, 0.85
     # 8 Cg, Cp, Cw = 0.5, 0.5, 0.8
     Cg, Cp, Cw = 0.4, 0.7, 0.9
@@ -466,7 +475,7 @@ if __name__ == "__main__":
         # get_custom_objects().update({'gelu': Activation(gelu)})
         # get_custom_objects().update({'leaky-relu': Activation(LeakyReLU(alpha=0.2))})
         # ...............................
-        f = open("SSO_wafer1203_9_mse_3.txt", "a+")
+        f = open("SSO_cnn.txt", "a+")
 
         # ...............................
         ORIGIN(X[0])

@@ -50,3 +50,16 @@ only need three variables: temp Nf LC
 
 - Change the score metric of SSO to MAPE, MSE of cumulative data
 - Fix cumulative for test data
+
+# 24/8/2023
+
+- Run only CNN with base number on all dataset
+- Create a table to show which dataset require which models
+- CNN with SSO output
+- CNN LSTM with SSO output
+
+- How the solar power
+- Where is data
+- Preprocessing
+- CNN, LSTM, pseudo code, flow charts
+- Comparison between dataset, which dataset suitable for which models
