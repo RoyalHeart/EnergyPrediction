@@ -50,12 +50,11 @@ from sklearn.preprocessing import MinMaxScaler
 
 gBest = 0
 DATA_LOCATION = "Data/20230625-Data_for_ML"
-DATA_FILE_NAME = "Data_for_ML_TT-DB0"
+DATA_FILE_NAME = "Data_for_ML_TT-DB1"
 FEATURE_NUMBER = 2
 TIME_STEP = 4
 Y_COL = 1
 TRAIN_TEST_RATIO = 0.8
-DATA_FILE_NAME = "Data_for_ML_TT-DB0"
 MODEL_LOCATION = "../Model"
 SAVE_MODEL_LOCATION = f"{MODEL_LOCATION}/{DATA_FILE_NAME}"
 
@@ -80,8 +79,8 @@ def DataSet():
     )
     dataset = dataframe.values
     # # Preprocessing
-    for i in range(dataset.shape[0]):
-        dataset[i][0] = int(dataset[i][0].replace("TT", "").replace("'", ""))
+    # for i in range(dataset.shape[0]):
+    #     dataset[i][0] = int(dataset[i][0].replace("TT", "").replace("'", ""))
     # dataset[np.isnan(dataset)] = 0
     dataset = dataset.astype("float64")
     new_dataset = np.array(np.zeros((1, FEATURE_NUMBER)))
@@ -109,9 +108,9 @@ def DataSet():
     dataset = new_dataset[1:, :]
 
     # cumulative dataset
-    for i in range(1, dataset.shape[0]):
-        dataset[i, Y_COL] = dataset[i - 1, Y_COL] + dataset[i, Y_COL]
-        # dataset[i] = dataset[i-1] + dataset[i]
+    # for i in range(1, dataset.shape[0]):
+    #     dataset[i, Y_COL] = dataset[i - 1, Y_COL] + dataset[i, Y_COL]
+    # dataset[i] = dataset[i-1] + dataset[i]
     scaler = MinMaxScaler(feature_range=(0, 1))
     train_size = int(len(dataset) * TRAIN_TEST_RATIO)
     test_size = len(dataset) - train_size
@@ -264,7 +263,7 @@ def LeNet(X):
     # model.save("model/WaferID_model_{}.h5".format(score[0]))
     # print('Test loss:', score[0])
     # print('Test accuracy:', score[1])
-    return test_mape, param
+    return test_mse, param
 
 
 # ------------------------------------------------------------------------------
@@ -452,7 +451,7 @@ def SSO_UPDATE(sol, Nx, Ny):
 
 # *****************************************************************************************
 if __name__ == "__main__":
-    Ngen, Nsol, Nvar, Nrun = 20, 50, 9, 5
+    Ngen, Nsol, Nvar, Nrun = 20, 10, 9, 2
     # 6 Cg, Cp, Cw = 0.35, 0.65, 0.85
     # 8 Cg, Cp, Cw = 0.5, 0.5, 0.8
     Cg, Cp, Cw = 0.4, 0.7, 0.9

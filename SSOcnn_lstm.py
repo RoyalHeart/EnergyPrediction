@@ -55,7 +55,6 @@ FEATURE_NUMBER = 2
 TIME_STEP = 4
 Y_COL = 1
 TRAIN_TEST_RATIO = 0.8
-DATA_FILE_NAME = "Data_for_ML_TT-DB0"
 MODEL_LOCATION = "../Model"
 SAVE_MODEL_LOCATION = f"{MODEL_LOCATION}/{DATA_FILE_NAME}"
 
@@ -71,7 +70,7 @@ def create_dataset(dataset, look_back=1, y_col=Y_COL):
     return np.array(dataX), np.array(dataY)
 
 
-def DataSet():  # 請忽略這個原版的
+def DataSet():
     dataframe = pd.read_excel(
         f"{DATA_LOCATION}/{DATA_FILE_NAME}.xlsx",
         sheet_name="Sheet1",
@@ -109,9 +108,9 @@ def DataSet():  # 請忽略這個原版的
     dataset = new_dataset[1:, :]
 
     # cumulative dataset
-    for i in range(1, dataset.shape[0]):
-        dataset[i, Y_COL] = dataset[i - 1, Y_COL] + dataset[i, Y_COL]
-        # dataset[i] = dataset[i-1] + dataset[i]
+    # for i in range(1, dataset.shape[0]):
+    #     dataset[i, Y_COL] = dataset[i - 1, Y_COL] + dataset[i, Y_COL]
+    # dataset[i] = dataset[i-1] + dataset[i]
     scaler = MinMaxScaler(feature_range=(0, 1))
     train_size = int(len(dataset) * TRAIN_TEST_RATIO)
     test_size = len(dataset) - train_size
@@ -413,7 +412,7 @@ def SSO_UPDATE(sol, Nx, Ny):
 
 # *****************************************************************************************
 if __name__ == "__main__":
-    Ngen, Nsol, Nvar, Nrun = 20, 20, 7, 5
+    Ngen, Nsol, Nvar, Nrun = 20, 10, 7, 2
     # 6 Cg, Cp, Cw = 0.35, 0.65, 0.85
     # 8 Cg, Cp, Cw = 0.5, 0.5, 0.8
     Cg, Cp, Cw = 0.4, 0.7, 0.9

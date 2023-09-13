@@ -58,8 +58,35 @@ only need three variables: temp Nf LC
 - CNN with SSO output
 - CNN LSTM with SSO output
 
+# 5/9/2023
+
+1. Introduction
+   Base on other paper
+2. Information
+
 - How the solar power
 - Where is data
-- Preprocessing
-- CNN, LSTM, pseudo code, flow charts
+- Diode
+
+3. How to create data, meaning
+4. Machine learning method, algorithms
+
+- CNN
+- LSTM
+- DNN
+- SSO
+
+- Propose method
+  - CNN_LSTM_DNN
+  - CNN_SSO
+  - CNN_LSTM_DNN_SSO
+
+5. Description data, result (description, analyze, observation)
+
 - Comparison between dataset, which dataset suitable for which models
+
+6. Conclusion
+
+# 7/9/2023
+
+- 8/9/2023 see how to create the dataset, how to
