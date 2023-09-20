@@ -16,44 +16,30 @@ import time
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-
 # coding=utf-8
 import tensorflow
 from IPython.display import display
 from keras import backend as K
-from keras.layers import (
-    ELU,
-    LSTM,
-    Activation,
-    Conv1D,
-    Dense,
-    Flatten,
-    LeakyReLU,
-    MaxPooling1D,
-    ReLU,
-    ThresholdedReLU,
-)
+from keras.layers import (ELU, LSTM, Activation, Conv1D, Dense, Flatten,
+                          LeakyReLU, MaxPooling1D, ReLU, ThresholdedReLU)
 from keras.layers.convolutional import Conv2D, MaxPooling2D
 from keras.models import Sequential
 from keras.utils.generic_utils import get_custom_objects
-
 # from keras.utils.vis_utils import plot_model
 from keras.utils.np_utils import to_categorical
 from numpy.ma import cos, exp, sin
 from PIL import Image
-from sklearn.metrics import (
-    mean_absolute_error,
-    mean_absolute_percentage_error,
-    mean_squared_error,
-)
+from sklearn.metrics import (mean_absolute_error,
+                             mean_absolute_percentage_error,
+                             mean_squared_error)
 from sklearn.preprocessing import MinMaxScaler
 
 gBest = 0
 DATA_LOCATION = "Data/20230625-Data_for_ML"
 DATA_FILE_NAME = "Data_for_ML_TT-DB2-1"
-FEATURE_NUMBER = 2
-TIME_STEP = 4
-Y_COL = 1
+FEATURE_NUMBER = 3
+TIME_STEP = 10
+Y_COL = 2
 TRAIN_TEST_RATIO = 0.8
 MODEL_LOCATION = "../Model"
 SAVE_MODEL_LOCATION = f"{MODEL_LOCATION}/{DATA_FILE_NAME}"
@@ -75,7 +61,7 @@ def DataSet():
         f"{DATA_LOCATION}/{DATA_FILE_NAME}.xlsx",
         sheet_name="Sheet1",
         header=1,
-        usecols=[0, 3],
+        usecols=[0, 1, 3],
     )
     dataset = dataframe.values
     # # Preprocessing
@@ -435,7 +421,7 @@ if __name__ == "__main__":
         # get_custom_objects().update({'gelu': Activation(gelu)})
         # get_custom_objects().update({'leaky-relu': Activation(LeakyReLU(alpha=0.2))})
         # ...............................
-        f = open(f"SSO_cnn_lstm_{DATA_FILE_NAME}.txt", "a+")
+        f = open(f"./SSO_output/SSO_cnn_lstm_{DATA_FILE_NAME}.txt", "a+")
 
         # ...............................
         ORIGIN(X[0])

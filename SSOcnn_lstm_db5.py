@@ -51,9 +51,9 @@ from sklearn.preprocessing import MinMaxScaler
 gBest = 0
 DATA_LOCATION = "Data/20230625-Data_for_ML"
 DATA_FILE_NAME = "Data_for_ML_TT-DB5-1-1"
-FEATURE_NUMBER = 2
-TIME_STEP = 4
-Y_COL = 1
+FEATURE_NUMBER = 3
+TIME_STEP = 10
+Y_COL = 2
 TRAIN_TEST_RATIO = 0.8
 MODEL_LOCATION = "../Model"
 SAVE_MODEL_LOCATION = f"{MODEL_LOCATION}/{DATA_FILE_NAME}"
@@ -75,7 +75,7 @@ def DataSet():
         f"{DATA_LOCATION}/{DATA_FILE_NAME}.xlsx",
         sheet_name="Sheet1",
         header=1,
-        usecols=[0, 4],
+        usecols=[0, 2, 4],
     )
     dataset = dataframe.values
     # # Preprocessing
@@ -435,7 +435,7 @@ if __name__ == "__main__":
         # get_custom_objects().update({'gelu': Activation(gelu)})
         # get_custom_objects().update({'leaky-relu': Activation(LeakyReLU(alpha=0.2))})
         # ...............................
-        f = open(f"SSO_cnn_lstm_{DATA_FILE_NAME}.txt", "a+")
+        f = open(f"./SSO_output/SSO_cnn_lstm_{DATA_FILE_NAME}.txt", "a+")
 
         # ...............................
         ORIGIN(X[0])

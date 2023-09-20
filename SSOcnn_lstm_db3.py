@@ -51,9 +51,9 @@ from sklearn.preprocessing import MinMaxScaler
 gBest = 0
 DATA_LOCATION = "Data/20230625-Data_for_ML"
 DATA_FILE_NAME = "Data_for_ML_TT-DB3-1-1"
-FEATURE_NUMBER = 2
-TIME_STEP = 4
-Y_COL = 1
+FEATURE_NUMBER = 3
+TIME_STEP = 10
+Y_COL = 2
 TRAIN_TEST_RATIO = 0.8
 MODEL_LOCATION = "../Model"
 SAVE_MODEL_LOCATION = f"{MODEL_LOCATION}/{DATA_FILE_NAME}"
@@ -75,7 +75,7 @@ def DataSet():
         f"{DATA_LOCATION}/{DATA_FILE_NAME}.xlsx",
         sheet_name="Sheet1",
         header=1,
-        usecols=[0, 3],
+        usecols=[0, 1, 3],
     )
     dataset = dataframe.values
     # # Preprocessing
