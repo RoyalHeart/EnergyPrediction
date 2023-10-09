@@ -75,7 +75,7 @@ def DataSet():
         f"{DATA_LOCATION}/{DATA_FILE_NAME}.xlsx",
         sheet_name="Sheet1",
         header=1,
-        usecols=[0, 1, 3],
+        usecols=[0, 1, 3], # Temperature, Current, LC
     )
     dataset = dataframe.values
     # # Preprocessing

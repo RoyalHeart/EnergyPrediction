@@ -425,7 +425,6 @@ if __name__ == "__main__":
 
     for run in range(0, Nrun):
         X = np.zeros([Nsol, Nvar], dtype=int)
-
         pT = np.zeros([Nsol], dtype=float)
         Y = np.zeros([Nvar], dtype=int)
         PR = np.zeros([Nsol], dtype=int)

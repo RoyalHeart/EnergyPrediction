@@ -1,24 +1,31 @@
 # Energy Prediction with CNN, LSTM
 
 This is a project to predict some properties of the solar power system like the
-remaining useful lifecycle, power created, etc.
+remaining useful life (RUL), lifetime consumption (LC), and acumulated damage (AD).
 
-## Train file
+## Train data
 
-The train.inpynb is for a dataset with three years data with one minute interval
-
-train_db and train_db1 is for a dataset with one and a half year data with one day interval
+Because the project is private so the training data is hidden.
 
 ## Structure
 
-All the saved models with some evaluation are in the Model, Model2, Model3 folders
+All the saved models with some evaluation are in the Model folders
+
+There are two types of SSO files, one for the cnn only model, and the other for the combined model.
+Each dataset group will have a different SSO file.
+
+As for training the models, all the files are in the folder Train
+
+## Step to run
+
+First run the SSO files to get the hyperparameter set for the model.
+
+Then use the output of SSO to train models with a good set of hyperparameters.
+
+All the trained model will be saved with the evaluation file.
 
 ## Example
 
 Prediction of life cycle for the three year datasets
 
-![predict_three_years](./Model/33/predict.png)
-
-Prediction of life cycle for the one and half year datasets
-
-![predict](./Model2/4/predict.png)
+![predict_three_years](./Model/Data_1h/33/predict.png)

@@ -16,43 +16,29 @@ import time
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-
 # coding=utf-8
 import tensorflow
 from IPython.display import display
 from keras import backend as K
-from keras.layers import (
-    ELU,
-    LSTM,
-    Activation,
-    Conv1D,
-    Dense,
-    Flatten,
-    LeakyReLU,
-    MaxPooling1D,
-    ReLU,
-    ThresholdedReLU,
-)
+from keras.layers import (ELU, LSTM, Activation, Conv1D, Dense, Flatten,
+                          LeakyReLU, MaxPooling1D, ReLU, ThresholdedReLU)
 from keras.layers.convolutional import Conv2D, MaxPooling2D
 from keras.models import Sequential
 from keras.utils.generic_utils import get_custom_objects
-
 # from keras.utils.vis_utils import plot_model
 from keras.utils.np_utils import to_categorical
 from numpy.ma import cos, exp, sin
 from PIL import Image
-from sklearn.metrics import (
-    mean_absolute_error,
-    mean_absolute_percentage_error,
-    mean_squared_error,
-)
+from sklearn.metrics import (mean_absolute_error,
+                             mean_absolute_percentage_error,
+                             mean_squared_error)
 from sklearn.preprocessing import MinMaxScaler
 
 gBest = 0
 DATA_LOCATION = "Data/20230625-Data_for_ML"
 DATA_FILE_NAME = "Data_for_ML_TT-DB1"
 FEATURE_NUMBER = 2
-TIME_STEP = 4
+TIME_STEP = 10
 Y_COL = 1
 TRAIN_TEST_RATIO = 0.8
 MODEL_LOCATION = "../Model"

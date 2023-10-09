@@ -90,3 +90,8 @@ only need three variables: temp Nf LC
 # 7/9/2023
 
 - 8/9/2023 see how to create the dataset, how to
+
+# 14-21/9/2023
+
+- Write thesis, compute all models to get evaluation
+- Clean up source code, write comments
